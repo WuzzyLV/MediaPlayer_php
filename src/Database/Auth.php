@@ -1,6 +1,6 @@
 <?php
 
-namespace Wuzzy\MusicPlayer\Auth;
+namespace Wuzzy\MusicPlayer\Database;
 
 use Wuzzy\MusicPlayer\Database\Connection;
 

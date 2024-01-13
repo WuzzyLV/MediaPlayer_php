@@ -8,7 +8,6 @@ $requestUri = $_SERVER['REQUEST_URI'];
 $requestUri = explode('?', $requestUri)[0];
 
 session_start();
-echo $_SESSION['loggedIn'];
 //init value if not set
 if (!isset($_SESSION['loggedIn'])) {
     $_SESSION['loggedIn'] = false;
@@ -30,7 +29,11 @@ switch ($requestUri) {
         break;
     case '/logout':
         $_SESSION['loggedIn'] = false;
+        $_SESSION['username'] = null;
         header('Location: /login');
+        break;
+    case '/upload':
+        require "../views/upload/upload.php";
         break;
     default:
         echo "lel";

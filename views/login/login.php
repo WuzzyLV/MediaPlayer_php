@@ -3,6 +3,7 @@ $errors = array();
 
 function passRegister($auth, $username, $password) {
     if ($auth->register($username, $password)) {
+        $_SESSION['username'] = $username;
         $_SESSION['loggedIn'] = true;
         header('Location: /');
         exit;
@@ -14,6 +15,7 @@ function passRegister($auth, $username, $password) {
 
 function passLogin($auth, $username, $password) {
     if ($auth->login($username, $password)) {
+        $_SESSION['username'] = $username;
         $_SESSION['loggedIn'] = true;
         header('Location: /');
         exit;
@@ -24,7 +26,7 @@ function passLogin($auth, $username, $password) {
 }
 
 if (isset($_POST['auth'])) {
-    $auth = new \Wuzzy\MusicPlayer\Auth\Auth;
+    $auth = new \Wuzzy\MusicPlayer\Database\Auth;
 
     $username = $_POST['username'];
     $password = $_POST['password'];

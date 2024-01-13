@@ -2,7 +2,9 @@
     "name": "wuzzy/music_player",
     "type": "project",
     "require": {
-        "owen-oj/laravel-getid3": "^2.2"
+        "owen-oj/laravel-getid3": "^2.2",
+        "james-heinrich/getid3": "^1.9",
+        "wapmorgan/mp3info": "^0.1.0"
     },
     "autoload": {
         "psr-4": {
