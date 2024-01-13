@@ -1,0 +1,21 @@
+{
+    "name": "wuzzy/music_player",
+    "type": "project",
+    "require": {
+        "owen-oj/laravel-getid3": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wuzzy\\MusicPlayer\\": "src/"
+        },
+        "files": [
+            "config/config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Wuzzy",
+            "email": "wuzzy@github.com"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /Controller.php?path=$1 [NC,L,QSA]
+
+# Additional Rule for requests to root path
+RewriteRule ^$ /Controller.php [NC,L,QSA]
