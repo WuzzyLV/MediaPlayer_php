@@ -35,7 +35,16 @@ switch ($requestUri) {
     case '/upload':
         require "../views/upload/upload.php";
         break;
+    case '/api/allsongs':
+        require "../api/allsongs/allsongs.php";
+        break;
+    case '/api/newplaylist':
+        require "../api/newplaylist/newplaylist.php";
+        break;
+    case '/api/allplaylists':
+        require "../api/allplaylists/allplaylists.php";
+        break;
     default:
-        echo "lel";
+        require "../views/index/index.php";
         break;
 }

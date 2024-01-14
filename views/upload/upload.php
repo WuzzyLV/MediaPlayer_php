@@ -18,6 +18,7 @@ if (isset($_POST['submit'])) {
     <title>Upload</title>
 </head>
 <body>
+    <?php require COMP_PATH . 'Navbar.php'; ?>
     
     <?php
         if (isset($errors) && $errors->hasErrors()){
