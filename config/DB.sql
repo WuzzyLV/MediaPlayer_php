@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS playlist_songs (
 CREATE TABLE IF NOT EXISTS user_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    last_played_song_id INTEGER NOT NULL,
-    current_song_id INTEGER NOT NULL,
-    current_playlist_id INTEGER NOT NULL,
+    last_played_song_id INTEGER,
+    current_song_id INTEGER,
+    current_playlist_id INTEGER,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (last_played_song_id) REFERENCES songs(id),
     FOREIGN KEY (current_song_id) REFERENCES songs(id),

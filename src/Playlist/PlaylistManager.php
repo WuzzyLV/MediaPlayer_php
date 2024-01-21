@@ -39,6 +39,8 @@ class PlaylistManager {
 
         $playlist['songs'] = $this->getPlaylistsSongs($playlistID);
 
+        unset($playlist['user_id']);
+
         return $playlist;
     }
 

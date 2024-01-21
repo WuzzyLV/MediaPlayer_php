@@ -4,7 +4,8 @@
     "require": {
         "owen-oj/laravel-getid3": "^2.2",
         "james-heinrich/getid3": "^1.9",
-        "wapmorgan/mp3info": "^0.1.0"
+        "wapmorgan/mp3info": "^0.1.0",
+        "ext-mysqli": "*"
     },
     "autoload": {
         "psr-4": {

@@ -21,5 +21,10 @@
         <div class="playlists"></div>
     </div>
 
+    <button id = "playPlaylist">Play Playlist</button>
+
+    <audio controls id="audioPlayer">
+        <source src="" type="audio/mpeg">
+    </audio>
 </body>
 </html>

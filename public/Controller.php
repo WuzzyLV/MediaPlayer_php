@@ -44,6 +44,12 @@ switch ($requestUri) {
     case '/api/allplaylists':
         require "../api/allplaylists/allplaylists.php";
         break;
+    case '/api/playplaylist':
+        require "../api/play/playplaylist.php";
+        break;
+    case '/api/playsong':
+        require "../api/play/playsong.php";
+        break;
     default:
         require "../views/index/index.php";
         break;
