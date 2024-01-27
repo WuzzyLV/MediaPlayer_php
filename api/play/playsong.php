@@ -21,7 +21,7 @@ if ($songId == null) {
     exit;
 }
 
-$song = $songManager->getSong($songId, $userId);
+$song = $songManager->getSong($songId);
 
 if ($song == null) {
     http_response_code(404);
@@ -38,7 +38,7 @@ if (file_exists($song['path'])){
     header('Accept-Ranges: bytes');
     readfile($song['path']);
 }else{
-    http_response_code();
+    echo "File not found";
     exit;
 }
 

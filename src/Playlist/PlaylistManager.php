@@ -86,5 +86,41 @@ class PlaylistManager {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getNextSong($playlistID, $songID){
+        $allSongs = $this->getPlaylistsSongs($playlistID);
+
+        $nextSong = null;
+        foreach ($allSongs as $key => $song) {
+            if ($song['song_id'] == $songID) {
+                if ($key == count($allSongs) - 1) {
+                    $nextSong = $allSongs[0];
+                    break;
+                }
+                $nextSong = $allSongs[$key + 1];
+                break;
+            }
+        }
+        return $nextSong;
+
+    }
+
+    public function getPreviousSong($playlistID, $songID){
+        $allSongs = $this->getPlaylistsSongs($playlistID);
+
+        $previousSong = null;
+        foreach ($allSongs as $key => $song) {
+            if ($song['song_id'] == $songID) {
+                if ($key == 0) {
+                    $previousSong = $allSongs[count($allSongs) - 1];
+                    break;
+                }
+                $previousSong = $allSongs[$key - 1];
+                break;
+            }
+        }
+        return $previousSong;
+
+    }
+
 
 }

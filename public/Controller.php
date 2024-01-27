@@ -24,6 +24,9 @@ if ($_SESSION['loggedIn'] == false && $requestUri != '/login') {
 }
 
 switch ($requestUri) {
+    case '/':
+        require "../views/index/index.php";
+        break;
     case '/login':
         require "../views/login/login.php";
         break;
@@ -50,7 +53,16 @@ switch ($requestUri) {
     case '/api/playsong':
         require "../api/play/playsong.php";
         break;
+    case '/api/nextsong':
+        require "../api/play/nextSong.php"; //TODO FIX FILE CAPITALIZATION
+        break;
+    case '/api/rewindsong':
+        require "../api/play/rewindsong.php";
+        break;
+    case '/api/songinfo':
+        require "../api/play/songinfo.php";
+        break;
     default:
-        require "../views/index/index.php";
+        header('Location: /');
         break;
 }

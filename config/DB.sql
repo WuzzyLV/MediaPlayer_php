@@ -14,10 +14,10 @@ CREATE TABLE IF NOT EXISTS songs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INTEGER NOT NULL,
     path VARCHAR(255) NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    artist VARCHAR(255) NOT NULL,
-    album VARCHAR(255) NOT NULL,
-    year INTEGER NOT NULL,
+    title VARCHAR(255),
+    artist VARCHAR(255),
+    album VARCHAR(255),
+    year INTEGER,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

@@ -1,3 +1,6 @@
 composer.phar
 /vendor/
+<<<<<<< Updated upstream
 .idea/
+=======
+>>>>>>> Stashed changes

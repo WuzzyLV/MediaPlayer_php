@@ -37,9 +37,15 @@ class SongUploader {
         $file_tmp = $file['tmp_name'];
 
         $file_path = SONG_PATH . $file_name;
-        move_uploaded_file($file_tmp, $file_path);
 
-        $tags = $this->getID3Data($file_path);
+        $tags = array();
+        
+        if(move_uploaded_file($file_tmp, $file_path)){
+            $tags = $this->getID3Data($file_path);
+        }else{
+            $errors->addError("Not uploaded because of error #" . $file["error"]);
+            return $errors;
+        }
 
         if ($this->isSongInDB($tags)) {
             $errors->addError("Song already exists in database");
@@ -51,6 +57,8 @@ class SongUploader {
             $errors->addError("Error adding song to database");
             return $errors;
         }
+        $errors->addError("Song successfully uploaded");
+        return $errors;
     }
 
     private function isValidExtension($file) {
@@ -113,22 +121,30 @@ class SongUploader {
 
     private function addToDatabase($path, $tags) {
         $user = new User();
-
+    
         $userID = $user->getIDByUsername($_SESSION['username']);
-
+    
         if ($userID == null) {
             return false;
         }
-
+    
+        // Check if 'year' is empty, and set it to null or a default value
+        $year = !empty($tags['year']) ? intval($tags['year']) : 0;
+    
         $sql = "INSERT INTO songs (path, title, artist, album, year, user_id) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->connection->prepare($sql);
-
+    
         if ($stmt == false) {
             return false;
         }
-
-        $stmt->bind_param('sssssi', $path, $tags['title'], $tags['artist'], $tags['album'], $tags['year'], $userID);
+        echo $stmt->error;
+        echo PHP_EOL. $tags['year'] . PHP_EOL;
+    
+        $stmt->bind_param('ssssii', $path, $tags['title'], $tags['artist'], $tags['album'], $year, $userID);
         $stmt->execute();
+        echo $stmt->error;
+    
         return true;
     }
+    
 }

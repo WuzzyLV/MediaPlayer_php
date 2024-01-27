@@ -25,10 +25,10 @@ class SongManager {
         return $songs;
     }
 
-    public function getSong($songID, $userID) {
-        $query = "SELECT * FROM songs WHERE id = ? AND user_id = ?";
+    public function getSong($songID) {
+        $query = "SELECT * FROM songs WHERE id = ?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ii", $songID, $userID);
+        $stmt->bind_param("i", $songID);
         $stmt->execute();
         $result = $stmt->get_result();
         $song = $result->fetch_assoc();
