@@ -47,11 +47,11 @@ class SongUploader {
             return $errors;
         }
 
-        if ($this->isSongInDB($tags)) {
-            $errors->addError("Song already exists in database");
-            unlink($file_path);
-            return $errors;
-        }
+        // if ($this->isSongInDB($tags)) {
+        //     $errors->addError("Song already exists in database");
+        //     unlink($file_path);
+        //     return $errors;
+        // }
 
         if (!$this->addToDatabase($file_path, $tags)) {
             $errors->addError("Error adding song to database");

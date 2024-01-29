@@ -17,19 +17,24 @@
     ?>
 
     <button id = "newPlaylist">New Playlist</button>
+    <div class="allsongs"></div>
 
-    <div class="flex">
-        <div class="allsongs"></div>
-
-        <div class="playlists"></div>
-    </div>
+    <div class="playlists flex"></div>
 
 
     <div class="controls">
-        <button id = "rewind">Rewind</button>
+        <button id = "rewind">Previous</button>
         <button id = "play">Play</button>
         <button id = "pause">Pause</button>
         <button id = "next">Next</button>
+        <div class="volume-container">
+        <input id = "volume" type="range" min = "0" max = "100" step= "1" value= "25">
+        <div id="volumeDisplay"></div>
+        </div>
+        <div class="seekbar-container">
+        <input id = "seekBar" type="range" min = "0" max = "100" step= "0.1" value= "0">
+        </div>
+
     </div>
 </body>
 </html>

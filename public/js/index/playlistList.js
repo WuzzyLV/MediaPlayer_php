@@ -1,28 +1,19 @@
 function createPlaylists(){
-    $.get("/api/allplaylists").then(function(data) {
-        $(".playlists").empty();
-
-        data.forEach(element => {
-            var playlist = $("<div>");
-            var title = $("<h3>");
-            title.text(element.name);
-            playlist.append(title);
-            //create button
-            var button = $("<button>");
-            button.attr("data-id", element.id);
-            button.text("Play");
-            button.addClass("playPlaylist");
-            playlist.append(button);
-
-            element.songs.forEach(song => {
-                var songTitle = $("<p>");
-                songTitle.text(song.title);
-                playlist.append(songTitle);
-            });
-
-            $(".playlists").append(playlist);
-        });
+    $.ajax({url: "/api/allplaylistshtml", method: "GET"}).then(function(data) {
+        $(".playlists").html(data);
     });
 }
 
 createPlaylists();
+
+
+$(".playlists").on("click", ".playPlaylist", function() {
+    $.post(
+        "/api/playplaylist", 
+        {
+            id: $(this).attr("data-id")
+        }
+    ).then(function(data) {
+        $(document).trigger("reloadSong");
+    });
+});

@@ -16,12 +16,14 @@ $(document).on("submit", "#newPlaylistForm", function(event) {
     $(".allsongs").empty();
     createPlaylists();
     event.preventDefault();
+    $(".playlists").show();
 });
 
 $("#newPlaylist").on("click", function() {
     $.get("/api/allsongs").then(function(data) {
         createForm(data);
     });
+    $(".playlists").hide();
 });
 
 function createForm(data) {

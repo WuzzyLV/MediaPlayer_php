@@ -10,6 +10,12 @@ use Wuzzy\MusicPlayer\Database\User;
 $user = new User();
 $playlistManager = new PlaylistManager();
 
+if (!isset($_POST['name']) || !isset($_POST['songs'])) {
+    http_response_code(400);
+    exit;
+}
+
+
 $playlistID = $playlistManager->createPlaylist(
     $user->getIDByUsername($_SESSION['username']),
     $_POST['name'],

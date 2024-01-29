@@ -41,11 +41,17 @@ switch ($requestUri) {
     case '/api/allsongs':
         require "../api/allsongs/allsongs.php";
         break;
+    case '/api/allsongshtml':
+        require "../api/allsongs/allsongshtml.php";
+        break;
     case '/api/newplaylist':
         require "../api/newplaylist/newplaylist.php";
         break;
     case '/api/allplaylists':
         require "../api/allplaylists/allplaylists.php";
+        break;
+    case '/api/allplaylistshtml':
+        require "../api/allplaylists/allplaylistshtml.php";
         break;
     case '/api/playplaylist':
         require "../api/play/playplaylist.php";
@@ -54,7 +60,10 @@ switch ($requestUri) {
         require "../api/play/playsong.php";
         break;
     case '/api/nextsong':
-        require "../api/play/nextSong.php"; //TODO FIX FILE CAPITALIZATION
+        require "../api/play/nextsong.php";
+        break;
+    case '/api/getnextsong':
+        require "../api/play/getnextsong.php";
         break;
     case '/api/rewindsong':
         require "../api/play/rewindsong.php";
